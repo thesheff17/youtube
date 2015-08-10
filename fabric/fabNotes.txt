@@ -1,0 +1,30 @@
+# lxc container creation
+lxc-create -t download -n fabric -- --dist ubuntu --release trusty --arch amd64
+lxc-start -d -n fabric
+lxc-attach -n fabric
+
+# updates
+apt-get update
+apt-get upgrade
+
+# configure fabric
+sudo apt-get install python python-pip vim ssh python-dev
+pip install fabric pycrypto ecdsa paramiko
+
+# check fabric
+fab --version
+
+# create ssh keygen
+ssh-keygen -b 2048 -t rsa
+
+# allow access on the local machine to itself
+cat id_rsa.pub > authorized_keys
+
+# remove ssh from known_hosts
+ssh-keygen -R hostname
+
+# running a remote command with ssh
+ssh localhost 'uptime'
+
+fab -H localhost method
+fab -H 192.168.1.105,192.168.1.110,192.168.1.111,192.168.1.115 run_updates
