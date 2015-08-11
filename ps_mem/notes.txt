@@ -1,0 +1,29 @@
+# install
+apt-get install screen wget
+wget http://www.pixelbeat.org/scripts/ps_mem.py
+mv ps_mem.py /usr/local/sbin/
+chmod 755 /usr/local/sbin/ps_mem.py
+
+# run command
+ps_mem.py
+
+# format date command
+date +mem_"%m_%d_%Y_%H:%M:%S_$HOSTNAME"
+
+# make a directory
+mkdir mem
+cd mem
+
+# log to nicely formatted date file
+ps_mem.py > `date +mem_"%m_%d_%Y_%H:%M:%S_$HOSTNAME"`
+
+# run the script in screen with a while loop
+screen
+while true; do
+ps_mem.py > `date +mem_"%m_%d_%Y_%H:%M:%S_$HOSTNAME"`
+sleep 10
+done
+
+# watch to make sure the logs are being generated 
+cd mem
+watch -n 3 'ls -la'
