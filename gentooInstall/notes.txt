@@ -1,0 +1,256 @@
+# KVM selection 
+generic 2.6 kernel
+
+# reset root password
+passwd
+
+# start ssh service
+/etc/init.d/sshd start
+
+# get ip address
+ifconfig
+
+# connect to remove server
+ssh root@iAddress 
+
+# format the drive
+fdisk /dev/sda
+# print out to make sure righ drive
+p
+
+
+# bios boot parition
+n 
+p
+1 for default
+first sector press enter
+last secotr +512M
+t
+4
+
+# should look like this now when you press P:
+/dev/sda1          2048  1050623  1048576  512M 83 Linux
+
+# swap partition
+n
+p
+2
+first sector <enter>
+last sector +2G
+t
+2
+82 for linux swap
+
+# now when you p the drive it says:
+Device     Boot   Start      End  Sectors  Size Id Type
+/dev/sda1          2048  1050623  1048576  512M 83 Linux
+/dev/sda2       1050624  5244927  4194304    2G 82 Linux swap / Solaris
+
+# root partition
+n
+3
+first sector <enter>
+last sector <enter> to use the rest of the hard drive
+
+# now when you hit P on 20G drive it should look like this:
+Device     Boot   Start      End  Sectors  Size Id Type
+/dev/sda1          2048  1050623  1048576  512M 83 Linux
+/dev/sda2       1050624  5244927  4194304    2G 82 Linux swap / Solaris
+/dev/sda3       5244928 41943039 36698112 17.5G 83 Linux
+
+
+# now write the file system to the drive
+w
+
+# now we need to format each partition
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3 
+
+
+# now we have to mount our drive
+mount /dev/sda3 /mnt/gentoo
+
+# create a boot directory
+mkdir /mnt/gentoo/boot
+
+# mount your boot partition
+mount /dev/sda1 /mnt/gentoo/boot
+
+# set date
+date
+Sat Aug 22 04:07:30 UTC 2015
+# if not correct do:
+date 032916212014
+
+# get the stage tarball
+cd /mnt/gentoo
+wget http://distfiles.gentoo.org/releases/amd64/autobuilds/20150820/stage3-amd64-20150820.tar.bz2
+
+# extract 
+tar xvjpf stage3-*.tar.bz2 --xattrs
+
+# now set how many cores you have:
+vi /mnt/gentoo/etc/portage/make.conf
+MAKEOPTS="-j4"
+
+# get the fastest mirros possible I use this mirror from the u.s.
+echo "GENTOO_MIRRORS="http://gentoo.osuosl.org/" >> /mnt/gentoo/etc/portage/make.conf
+echo "SYNC="rsync://rsync.us.gentoo.org/gentoo-portage" >> /mnt/gentoo/etc/portage/make.conf
+
+# copy DNS entries
+cp -L /etc/resolv.conf /mnt/gentoo/etc/
+
+# mount all your file systems
+mount -t proc proc /mnt/gentoo/proc 
+mount --rbind /sys /mnt/gentoo/sys 
+mount --make-rslave /mnt/gentoo/sys 
+mount --rbind /dev /mnt/gentoo/dev 
+mount --make-rslave /mnt/gentoo/dev
+
+# now enter the new ENV:
+chroot /mnt/gentoo /bin/bash 
+source /etc/profile 
+export PS1="(chroot) $PS1"
+
+# emerge the file system
+emerge-webrsync
+
+# update the prtage tree
+emerge --sync
+# slow terminals
+emerge --sync --quiet
+
+# to read more about what is going on
+eselect news list 
+eselect news read
+man news.eselect
+
+# to select a profile beyond just a terimal 
+eselect profile list
+
+# we are going to just select the default
+eselect profile set 1
+
+# set the timezone
+ls /usr/share/zoneinfo
+echo "America/Chicago" > /etc/timezone
+emerge --config sys-libs/timezone-data
+
+# set locals have to use nano because vi is not installed yet
+nano -w /etc/locale.gen
+un comment:
+en_US ISO-8859-1
+en_US.UTF-8 UTF-8
+ctrl-o to write
+ctrl-x to exit
+locale-gen
+
+# to verify 
+locale -a
+
+# set the env
+eselect locale list
+Available targets for the LANG variable:
+  [1]   C
+  [2]   en_US
+  [3]   en_US.iso88591
+  [4]   en_US.utf8
+  [5]   POSIX
+eselect locale set 4
+
+
+# setup the system wide locale
+env-update && source /etc/profile
+
+
+# now we need to configure the kernel
+emerge --ask sys-kernel/gentoo-sources
+
+# tells you what kernel you are running
+ls -l /usr/src/linux
+
+# its up to you if you want to manually configure the kernel.  For simplicity I will just do the auto stuff
+emerge --ask sys-kernel/genkernel
+
+# tell which parition to boot off of
+nano -w /etc/fstab
+# NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
+/dev/BOOT               /boot           ext4            noauto,noatime  1 2
+/dev/ROOT               /               ext4            noatime         0 1
+/dev/SWAP               none            swap            sw              0 0
+
+# now compile the kernel
+MAKEOPTS="-j4" genkernel all
+
+# list the compiled stuff
+ls /boot/kernel* /boot/initramfs*
+
+# set hostname
+nano -w /etc/conf.d/hostname
+enter hostname
+
+# network setup
+cd /etc/init.d/
+ln -s net.lo net.eth0
+rc-update add net.eth0 default
+
+# host file
+nano -w /etc/hosts
+127.0.0.1     gentoo localhost
+
+# set root password
+passwd
+
+# some other tools
+emerge --ask app-admin/syslog-ng
+rc-update add syslog-ng default
+emerge --ask sys-process/cronie
+rc-update add cronie default
+emerge --ask sys-apps/mlocate
+rc-update add sshd default
+emerge --ask net-misc/dhcpcd
+
+# boot loader
+emerge --ask sys-boot/grub
+grub2-install /dev/sda
+grub2-mkconfig -o /boot/grub/grub.cfg
+
+# exit and test
+exit
+cd /
+umount -l /mnt/gentoo/dev{/shm,/pts,}
+umount /mnt/gentoo{/boot,/sys,/proc,}
+root
+
+# networking 
+ifconfig -a
+cd /etc/init.d/
+mv net.eth0 enp0s3
+rc-update add enp0s3 default
+rc-update delete net.eth0
+
+# modify /etc/conf.d/net
+nano /etc/conf.d/net
+modules="dhcpcd"
+config_enp0s3="dhcp"
+dhcpcd_enp0s3="-t 10"
+dhcp_enp0s3="release nodns nontp nois"
+
+# modify /etc/resolv.conf
+namserver 8.8.8.8
+namserver 8.8.4.4
+
+# updates
+emerge-webrsync
+emerge -uDU --with-bdeps=y @world
+
+# install vim
+emerge --ask app-editors/vim
+# install screen
+emerge --ask app-misc/screen
+
+# lamp stack
+# install apache2
+emerge www-servers/apache
+rc-update add apache2 default
