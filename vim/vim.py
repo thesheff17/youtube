@@ -57,7 +57,8 @@ class Vim(object):
                           'https://github.com/kien/ctrlp.vim.git',
                           'https://github.com/scrooloose/nerdtree',
                           'https://github.com/klen/python-mode.git',
-                          'https://github.com/Lokaltog/vim-powerline.git']
+                          'https://github.com/Lokaltog/vim-powerline.git',
+                          'https://github.com/jistr/vim-nerdtree-tabs.git']
 
         self.apt_packages = 'vim git-core'
 
