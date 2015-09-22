@@ -27,13 +27,14 @@
 This program will install a better configured vim editor
 """
 
-import subprocess
+import __main__ as main
+import argparse
 import logging
 import os
-import urllib.request
+import subprocess
 import sys
 import timeit
-import __main__ as main
+import urllib.request
 
 # logging
 try:
@@ -100,11 +101,8 @@ class Vim(object):
         self.run_command("apt-get upgrade -y")
         self.run_command("apt-get install -y  " + self.apt_packages)
 
-    def pick_user(self):
-        self.run_command("clear")
-        self.username = input("Please enter the user you want to use.\n" +
-                              "Usually ubuntu: ")
-        logging.info("vim will be installed under user:" + self.username)
+    def pick_user(self, username):
+        self.username = username
 
         if self.username == 'root':
             self.dir_user = '/root/'
@@ -165,9 +163,14 @@ if __name__ == "__main__":
     print ("vim.py started...")
     start = timeit.default_timer()
 
+    # argparser
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-u", "--user", help="user name to use")
+    args = parser.parse_args()
+
     vim = Vim()
     vim.check_root()
-    vim.pick_user()
+    vim.pick_user(args.user)
     vim.packages()
     vim.directories()
     vim.config()
