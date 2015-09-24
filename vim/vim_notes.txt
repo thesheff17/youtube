@@ -1,0 +1,50 @@
+# install the packages
+sudo apt-get install vim git-core wget
+
+# get the vimrc file 
+wget https://raw.githubusercontent.com/thesheff17/youtube/master/vim/vimrc
+mv vimrc .vimrc
+
+# video by Martin Brochhaus
+https://www.youtube.com/watch?v=YhqsjUUHj6g
+
+# create directories
+mkdir .vim
+mkdir autoload bundle colors ftplugin
+
+# get autoload 
+cd ~/.vim/autoload
+wget https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+
+# get git clone bundles
+cd ~/.vim/bundle
+git clone https://github.com/tpope/vim-sensible.git && git clone https://github.com/kien/ctrlp.vim.git && git clone https://github.com/scrooloose/nerdtree && git clone https://github.com/klen/python-mode.git && git clone https://github.com/Lokaltog/vim-powerline.git && git clone https://github.com/jistr/vim-nerdtree-tabs.git
+
+# get colors file
+cd ~/.vim/colors
+wget https://raw.githubusercontent.com/thesheff17/youtube/master/vim/wombat256mod.vim
+
+# ftp plugin
+cd ~/.vim/ftplugin
+https://raw.githubusercontent.com/thesheff17/youtube/master/vim/python_editing.vim
+
+# sort
+, s
+
+# move code left right
+v for visual mode
+select text
+> moves right
+< moves left
+
+# edit remote file with your vim settings
+vim scp://root@10.0.3.33//home/ubuntu/test.py
+
+# automatically configure vim on your machine
+wget https://raw.githubusercontent.com/thesheff17/youtube/master/vim/vim.py
+chmod +x ./vim.py
+./vim.py -u root
+
+# remove vim configuration
+rm -rf .vim/
+rm .vimrc
