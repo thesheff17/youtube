@@ -26,7 +26,7 @@ wget https://raw.githubusercontent.com/thesheff17/youtube/master/vim/wombat256mo
 
 # ftp plugin
 cd ~/.vim/ftplugin
-https://raw.githubusercontent.com/thesheff17/youtube/master/vim/python_editing.vim
+wget https://raw.githubusercontent.com/thesheff17/youtube/master/vim/python_editing.vim
 
 # sort
 , s
