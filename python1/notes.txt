@@ -1,0 +1,83 @@
+# web sites
+https://www.python.org
+https://python3wos.appspot.com
+
+# some systems don't have have python2 anymore
+sudo apt-get install python
+
+# to quit out of the prompt is:
+ctrl-d
+
+# python2 only
+from __future__ import print_function
+
+# print in python2
+print ('hello world')
+
+# print in python3
+print ('hello world')
+
+# data types
+last_name = 'Sheffner'
+first_name = 'Dan'
+print (first_name)
+
+# get type
+type(last_name)
+type(first_name)
+
+# part of last name (substring)
+print (last_name[0:5])
+
+# upper case
+print (last_name.upper())
+
+# is the string upper case?
+last_name.isupper()
+
+# change last_name
+last_name = last_name.upper()
+
+# confirm it changed
+print (last_name)
+last_name.isupper()
+
+# docs for strings
+https://docs.python.org/2/library/string.html
+https://docs.python.org/3/library/string.html
+
+# find the index of a string
+last_name.index('ner')
+
+# find part of a sentence
+sentence1 = 'The quick brown fox jumps over the lazy brown dog'
+sentence1[sentence1.index('fox'):len(sentence1)]
+
+# clean up a string
+sentence2 = 'Pack my box with five dozen liquor jugs...'
+print (sentence2[:-3])
+
+# addition of 2 strings
+sentence1 += ' ' + sentence2
+
+# integers check type
+age = 33
+type(age)
+
+# make sure type int and now can do math
+age = 33
+type(33)
+age + 5
+age - 21
+
+# to print a integer inside a string
+print ('My name is ' + first_name + ' ' + last_name + ' and my age is ' + str(age) + '.')
+
+# another way to print
+print ("My name is {0} {1}  and my age is {2}.".format(first_name, last_name, age)
+
+# install bpython
+sudo apt-get install bpython
+
+# install bpython3
+sudo apt-get install python3
