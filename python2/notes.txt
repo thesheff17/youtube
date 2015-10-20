@@ -1,0 +1,39 @@
+# use python3
+python3
+
+# more advanced math
+(10-5)
+(10-5)*3
+
+# float data type
+my_float = 3.3
+type(my_float)
+# whole number integer
+age = 33
+type(age)
+
+# decimal point math
+5.3 / 2.2
+5.3 / my_float
+
+# convert different types
+type(age)
+print ('my age is ' + str(age))
+
+print ('my float is ' + str(my_float))
+
+# other direction
+age = '33'
+int(age) + 5
+
+# formatting number on int and float types
+value = 123421342134123412341234
+"{:,}".format(value)
+
+# start learning how import works
+import math
+print (math.pi)
+5 * math.pi
+
+# you don't want to do float to int
+int(my_float)
