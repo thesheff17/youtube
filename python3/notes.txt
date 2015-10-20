@@ -1,0 +1,80 @@
+# how to use lists
+
+# create empty list
+my_empty_list = []
+
+# see values
+print(my_empty_list)
+
+# check type
+type(my_empty_list)
+
+# dog name list
+dog_list = ['commet', 'bear', 'roo', 'baily', 'max']
+print (dog_list)
+
+# get the length of the list
+len(dog_list)
+
+# add to dog list
+dog_list.append('buddy')
+print(dog_list)
+
+# change a single value max to test
+dog_list[4] = 'test'
+
+# get an single return value
+dog_list[0]
+
+# remove and returns value
+dog_list.pop()
+
+# add back on
+dog_list.append('baily')
+
+# loop through a list
+for each in dog_list:
+    print (each)
+
+# add text to loop and learn quotes
+for each in dog_list:
+    print ("My dog's name is: " + each)
+
+# the other quotes
+for each in dog_list:
+    print('My dog"s name is: " + each)
+
+# third option escape character
+for each in dog_list:
+    print('My dog\'s name is: ' + each)
+
+# what is the data types of my list
+for each in dog_list:
+    print ('My dog\'s name is: ' + each + 'THe data t ype of this item is: ' + str(type(each)))
+
+# add an interger (don't recommend mixing data types)
+dog_list.append(33)
+
+# fixing mixed data types in loop (don't recommend data types)
+for each in dog_list:
+    print ('My dog\'s name is: ' + str(each) + 'THe data t ype of this item is: ' + str(type(each)))
+
+# create a new list when having multiple data types
+dog_age_list = [3, 2, 3, 4, 5]
+
+# remove that 33 from the dog list
+dog_list.pop()
+
+# loop through both lists
+for slot_location, each in emunerate(dog_list):
+    print ("My dog's name is: " + each + ' and his/her age is: ' + str(dog_age_list[slot_location]))
+
+# set dogs new age
+dog_age_list[0] += 2
+
+# list of list (Don't recommend)
+my_new_list = ['dan', [33, 22], 'chris', [22,44]]
+type(my_list_list)
+
+# read the zen of python
+import this
