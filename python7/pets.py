@@ -25,6 +25,9 @@
 
 # I give credit to https://ace.c9.io/#nav=about for this web based text editor
 
+# my source code can be found here for this class
+# https://raw.githubusercontent.com/thesheff17/youtube/master/python7/pets.py
+
 """
 This program will demo a class in python
 """
