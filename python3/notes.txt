@@ -57,7 +57,7 @@ dog_list.append(33)
 
 # fixing mixed data types in loop (don't recommend data types)
 for each in dog_list:
-    print ('My dog\'s name is: ' + str(each) + 'THe data t ype of this item is: ' + str(type(each)))
+    print ('My dog\'s name is: ' + str(each) + 'The data type of this item is: ' + str(type(each)))
 
 # create a new list when having multiple data types
 dog_age_list = [3, 2, 3, 4, 5]
