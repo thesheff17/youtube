@@ -69,6 +69,9 @@ dog_list.pop()
 for slot_location, each in emunerate(dog_list):
     print ("My dog's name is: " + each + ' and his/her age is: ' + str(dog_age_list[slot_location]))
 
+# dump slot_location and the value to console
+list(enumerate(dog_list))
+
 # set dogs new age
 dog_age_list[0] += 2
 
