@@ -50,7 +50,7 @@ for each in dog_list:
 
 # what is the data types of my list
 for each in dog_list:
-    print ('My dog\'s name is: ' + each + 'THe data t ype of this item is: ' + str(type(each)))
+    print ('My dog\'s name is: ' + each + 'The data type of this item is: ' + str(type(each)))
 
 # add an interger (don't recommend mixing data types)
 dog_list.append(33)
