@@ -50,14 +50,14 @@ for each in dog_list:
 
 # what is the data types of my list
 for each in dog_list:
-    print ('My dog\'s name is: ' + each + 'THe data t ype of this item is: ' + str(type(each)))
+    print ('My dog\'s name is: ' + each + 'The data type of this item is: ' + str(type(each)))
 
 # add an interger (don't recommend mixing data types)
 dog_list.append(33)
 
 # fixing mixed data types in loop (don't recommend data types)
 for each in dog_list:
-    print ('My dog\'s name is: ' + str(each) + 'THe data t ype of this item is: ' + str(type(each)))
+    print ('My dog\'s name is: ' + str(each) + 'The data type of this item is: ' + str(type(each)))
 
 # create a new list when having multiple data types
 dog_age_list = [3, 2, 3, 4, 5]
@@ -68,6 +68,9 @@ dog_list.pop()
 # loop through both lists
 for slot_location, each in emunerate(dog_list):
     print ("My dog's name is: " + each + ' and his/her age is: ' + str(dog_age_list[slot_location]))
+
+# dump slot_location and the value to console
+list(enumerate(dog_list))
 
 # set dogs new age
 dog_age_list[0] += 2
