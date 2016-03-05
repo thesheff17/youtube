@@ -1,0 +1,49 @@
+# updates
+apt-get update
+apt-get -y upgrade 
+
+# packages
+apt-get -y install build-essential python3-dev python3-pip wget apache2
+
+# pip installs
+pip3 install sphinx
+
+# create directory structure
+mkdir /root/sphinx/
+mkdir scripts rst html
+mkdir /var/www/html/sphinx
+
+# create the default conf.py
+sphinx-quickstart
+
+# modify the config.py to add a couple things:
+vi conf.py
+sys.path.append('/root/sphinx/scripts/')
+html_theme = 'default'
+
+# generate static html
+make html
+
+# get an example of code to sphinx
+cd /root/sphinx/scripts
+wget https://raw.githubusercontent.com/thesheff17/youtube/master/python7/pets.py
+cd ..
+
+# generate rst file
+sphinx-apidoc -o /root/sphinx/rst/ /root/sphinx/scripts/
+
+# copy your modules.rst to index.rst if you want
+cd rst/
+cp modules.rst index.rst
+
+# copy files around
+cd rst
+cp ../conf.py .
+mkdir sphinx
+sphinx-build -b html /root/sphinx/rst /root/sphinx/html/
+
+# copy to web directory
+cp -r /root/sphinx/html/* /var/www/html/sphinx/
+
+# fix permissions
+chown -R www-data:www-data /var/www/
