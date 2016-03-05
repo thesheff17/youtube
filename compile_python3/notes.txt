@@ -1,0 +1,38 @@
+# updates
+apt-get update
+apt-get upgrade -y
+
+# packages
+apt-get -y install libssl-dev openssl build-essential python3-dev libssl-dev wget
+
+# get the latest python
+wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz
+
+# always verify the download
+md5sum Python-3.5.1.tar.xz
+e9ea6f2623fffcdd871b7b19113fde80  Python-3.5.1.tar.xz
+root@python35:~# if [ "e9ea6f2623fffcdd871b7b19113fde80" == "e9ea6f2623fffcdd871b7b19113fde80" ]; then
+>  echo 'valid download'
+> fi
+valid download
+
+# get CPU count
+python3
+import multiprocessing
+print (multiprocessing.cpu_count())
+
+# extract
+tar -xf Python-3.5.1.tar.xz
+
+# compiling
+cd Python-3.5.1
+./configure --prefix=/usr/local/python3.5
+make -j 8
+make install
+
+# verify version
+cd /usr/local/python3.5/
+./python3 --version
+Python 3.5.1
+./pip3 --version
+pip 7.1.2 from /usr/local/lib/python3.5/site-packages (python 3.5)
