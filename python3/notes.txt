@@ -156,22 +156,22 @@ print (matrices[0][0])
 print (matrices[0][2])
 
 # string matrices ( spanning multiple lines in interpreter
-matrices1 = [['bulldog', 'german shepherd', 'poodle'], \
+animals = [['bulldog', 'german shepherd', 'poodle'], \
     ['sphynx', 'bengal', 'himalayan'], \
     ['parakeet', 'parrot', 'sparrow']]
 
-# print out matrices1
-for breed in matrices1:
+# print out animals
+for breed in animals:
     for item in breed:
         print (item)
 
 # print out by row:
-for breed in matrices1:
+for breed in animals:
     print (breed)
 
-['bulldog', 'german shepherd', 'poodle']
-['sphynx', 'bengal', 'himalayan']
-['parakeet', 'parrot', 'sparrow']
+for breed in animals:
+    print ('Get animals out of list: ' + ' '.join(breed))
+
 
 # video 7
 # read the zen of python
