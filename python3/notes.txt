@@ -1,5 +1,6 @@
 # how to use lists
 
+# video 1
 # create empty list
 my_empty_list = []
 
@@ -20,22 +21,26 @@ len(dog_list)
 dog_list.append('buddy')
 print(dog_list)
 
+# remove a single item
+dog_list.remove('roo')
+
 # change a single value max to test
 dog_list[4] = 'test'
-
-# get an single return value
-dog_list[0]
-
-# remove and returns value
-dog_list.pop()
-
-# add back on
-dog_list.append('baily')
 
 # access a single element
 print (dog_list[0])
 print (dog_list[1])
 
+# checking the type of a single item
+print (type(dog_list[0])
+
+# video 2
+# implementing a stack using python lists
+dog_list = [1, 2, 3, 4, 5, 6]
+# remove and returns value
+dog_list.pop()
+
+# video 3 
 # loop through a list
 for each in dog_list:
     print (each)
@@ -66,9 +71,6 @@ for each in dog_list:
 # create a new list when having multiple data types
 dog_age_list = [3, 2, 3, 4, 5]
 
-# remove that 33 from the dog list
-dog_list.pop()
-
 # loop through both lists
 for slot_location, each in emunerate(dog_list):
     print ("My dog's name is: " + each + ' and his/her age is: ' + str(dog_age_list[slot_location]))
@@ -79,10 +81,38 @@ list(enumerate(dog_list))
 # set dogs new age
 dog_age_list[0] += 2
 
+# video 4
+# copy/slicing lists
 # example of odd/even results:
-x = list(range(1,31)
+x = list(range(1,31))
+
+# print elements 3 through 10
+print (x[2:10])
+
+# print out the last element
+print (x[len(x)-1])
+# better way
+print (x[-1])
+
+# print everything except the last element
+print (x[:-1])
+
 print ('odd values are: ' + str(x[::2]))
 print ('even values are: ' + str(x[1::2]))
+
+# make a copy of a list
+x2 = list(x)
+
+# video 5 
+dog_list = ['commet', 'bear', 'roo', 'baily', 'max']
+print (dog_list)
+
+# prints sorted list but does not change list:
+print (sorted(dog_list)
+
+# use sorted in a loop.  Still doesn't change it:
+for each in sorted(dog_list):
+   print (each)
 
 # make a copy of list and sort
 sort_dog_list = sorted(dog_list)
@@ -92,10 +122,16 @@ print (sort_dog_list)
 reverse_sort_dog_list = sorted(dog_list, reverse=True)
 print (reverse_sort_dog_list)
 
+# video 6
 # example nested lists :( (Don't recommend)
 my_new_list = ['dan', [33, 22], 'chris', [22,44]]
 type(my_list_list)
 
+# printing out nested lists:
+print (my_new_list[1]
+print (my_new_list[1][0])
+
+# bet there are legit cases when nested lists are needed
 # matrices
 matrices1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 print (matrices[0])
@@ -112,16 +148,6 @@ for breed in matrices1:
     for item in breed:
         print (item)
 
-bulldog
-german sheppard
-poodle
-sphynx
-bengal
-himalayan
-parakeet
-parrot
-sparrow
-
 # print out by row:
 for breed in matrices1:
     print (breed)
@@ -130,5 +156,6 @@ for breed in matrices1:
 ['sphynx', 'bengal', 'himalayan']
 ['parakeet', 'parrot', 'sparrow']
 
+# video 7
 # read the zen of python
 import this
