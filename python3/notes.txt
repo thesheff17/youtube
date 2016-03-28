@@ -87,6 +87,11 @@ dog_age_list = [3, 2, 3, 4, 5]
 for slot_location, each in emunerate(dog_list):
     print ("My dog's name is: " + each + ' and his/her age is: ' + str(dog_age_list[slot_location]))
 
+# adding in a third list
+dog_owner_list = ['Dave', 'Steve', 'Matt', 'Chris', 'Bob']
+for slot_location, each in enumerate(dog_list):
+print ("My dog's name is: " + each + ' and his/her age is: ' + str(dog_age_list[slot_location]) + ' The owners name is: ' + str(dog_owner_list[slot_location]))
+
 # dump slot_location and the value to console
 list(enumerate(dog_list))
 
