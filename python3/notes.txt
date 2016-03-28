@@ -10,6 +10,18 @@ print(my_empty_list)
 # check type
 type(my_empty_list)
 
+# other data types go into lists
+dog1 = 'commet'
+dog2 = 'bear'
+
+# add 2 string objects to list
+dog_list = [dog1, dog2]
+print (dog_list)
+
+# now lets clear the dog_list
+dog_list = []
+print (dog_list)
+
 # dog name list
 dog_list = ['commet', 'bear', 'roo', 'baily', 'max']
 print (dog_list)
