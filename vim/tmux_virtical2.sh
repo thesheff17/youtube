@@ -22,7 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# creates a 2 horizontal terminal
+# creates a 2 virtical terminal
 
 tmux start-server
 
