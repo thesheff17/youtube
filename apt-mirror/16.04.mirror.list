@@ -17,10 +17,12 @@ set _tilde 0
 deb-amd64 http://us.archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
 deb-amd64 http://us.archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
 deb-amd64 http://us.archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
+deb-amd64 http://us.archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse
 
 deb-i386 http://us.archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
 deb-i386 http://us.archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
 deb-i386 http://us.archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
+deb-i386 http://us.archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse
 
 deb-src http://us.archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
 deb-src http://us.archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
