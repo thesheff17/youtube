@@ -9,6 +9,9 @@ runtime ~/.vim/bundle/pathogen/autoload/pathogen.vim
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
+" gets rid of extra space
+autocmd BufWritePre * %s/\s\+$//e
+
 " map ctrl n to line numbers
 :nmap <C-N><C-N> :set invnumber<CR>
 
