@@ -18,6 +18,7 @@ deb-amd64 http://us.archive.ubuntu.com/ubuntu xenial main restricted universe mu
 deb-amd64 http://us.archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
 deb-amd64 http://us.archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
 deb-amd64 http://us.archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse
+deb-amd64 http://us.archive.ubuntu.com/ubuntu xenial main/debian-installer restricted/debian-installer universe/debian-installer multiverse/debian-installer
 
 deb-i386 http://us.archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
 deb-i386 http://us.archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
