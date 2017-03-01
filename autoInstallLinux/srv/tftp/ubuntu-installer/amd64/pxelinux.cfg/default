@@ -1,0 +1,12 @@
+# D-I config version 2.0
+# search path for the c32 support libraries (libcom32, libutil etc.)
+path ubuntu-installer/amd64/boot-screens/
+include ubuntu-installer/amd64/boot-screens/menu.cfg
+default ubuntu-installer/amd64/boot-screens/vesamenu.c32
+prompt 0
+timeout 0
+#################EDIT THIS####################33333
+label autoInstallLinux
+        kernel ubuntu-installer/amd64/linux
+        append APPEND ks=http://10.1.1.2/ks.cfg vga=normal initrd=ubuntu-installer/amd64/initrd.gz
+ramdisk_size=16432 root=/dev/rd/0 rw  --
