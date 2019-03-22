@@ -129,6 +129,9 @@ class Vim(object):
         for each in self.git_repos:
             self.run_command('git clone ' + each, cwd_directory=self.dir_user +
                              '.vim/bundle/')
+        #update the modules for python-mode (see read me at the python-mode github)
+        self.run_command('git submodule update --init --recursive', cwd_directory=self.dir_user +
+                             '.vim/bundle/python-mode/')
 
         # vim auto autoload file
         urllib.request.urlretrieve('https://tpo.pe/pathogen.vim',
