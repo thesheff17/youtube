@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Dan Sheffner Digital Imaging Software Soltuions, INC
+# Copyright (c) Dan Sheffner Digital Imaging Software Solutions, INC
 # All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
@@ -25,16 +25,18 @@
 
 # I give credit to https://ace.c9.io/#nav=about for this web based text editor
 
-# my source code can be found here for this class
+# my source code can be found here for this class 
 # https://raw.githubusercontent.com/thesheff17/youtube/master/python7/pets.py
 
 """
-This program will demo a class in python
+This program will demo a class in python3.  Tested with python 3.9.1 but will
+work with any version of python 3.x and up.  Python 2.x is no longer supported.
+You should NOT be using any code that is only python 2.x compatible.
 """
 
 import random
 
-class Pets(object):
+class Pets:
     """
     This class will represent a class for pets
     """
@@ -101,11 +103,11 @@ class Pets(object):
         :param pet_type: 3 most popular pets
          """
 
-        if pet_type is 'dog':
+        if pet_type == 'dog':
             print ('Dogs average life is: 13 years')
-        if pet_type is 'cat':
+        if pet_type == 'cat':
             print ('Cats average life is: 15 years')
-        if pet_type is 'fish':
+        if pet_type == 'fish':
            print ('Gold Fish average life is: 30 years')
 
 
