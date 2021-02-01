@@ -36,13 +36,17 @@ sphinx-apidoc -o /root/sphinx/rst/ /root/sphinx/scripts/
 cd rst/
 cp modules.rst index.rst
 
+# make static folder
+mkdir _static
+
 # copy files around
-cd rst
 cp ../conf.py .
+cd ..
 mkdir sphinx
 sphinx-build -b html /root/sphinx/rst /root/sphinx/html/
 
 # copy to web directory
+mkdir /var/www/html/sphinx
 cp -r /root/sphinx/html/* /var/www/html/sphinx/
 
 # fix permissions
