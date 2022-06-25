@@ -33,11 +33,13 @@ sudo apt-get install -yq \
 # if does (2nd run) it will skip this putting it in the .bashrc
 FILE1=/home/vscode/.pyenv/libexec/pyenv
 if [ ! -f $FILE1 ]
+then
 	cat pyenvbash >> ~/.bashrc
 fi
 
 FILE2=/home/vscode/.pyenv/versions/3.11.0b3/bin/python3
 if [ ! -f $FILE2 ]
+then
 	curl -Lq https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 	source ~/.bashrc
 
