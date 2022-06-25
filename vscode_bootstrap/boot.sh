@@ -48,5 +48,6 @@ if [ ! -f $FILE2 ]
 	sudo ln -s /home/vscode/.pyenv/versions/3.11.0b3/bin/python3 /usr/local/bin/python3.11
 else
 	echo "skipping install of python3.11.  Found a binary..."
+fi
 
 echo "dockervscode_bootstrap.sh completed."
