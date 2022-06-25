@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # this will bootstrap a debian based docker container
+SECONDS=0
+
 clear
 echo "dockervscode_bootstrap.sh started..."
 
@@ -50,4 +52,6 @@ then
 else
 	echo "skipping installation .pyenv exists.  delete this and the symlink to run again..."
 fi
+duration=$SECONDS
+echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
 echo "dockervscode_bootstrap.sh completed."
