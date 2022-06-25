@@ -29,27 +29,25 @@ sudo apt-get install -yq \
 	libffi-dev \
 	liblzma-dev
 
-# this is a crude check to see if the pyenv already exists.
-# if does (2nd run) it will skip this putting it in the .bashrc
+# this will kinda check if this script already ran
+# if you want to run this part remove .pyenv folder
+# also remove symlink generated below.
 FILE1=/home/vscode/.pyenv/libexec/pyenv
 if [ ! -f $FILE1 ]
 then
 	cat pyenvbash >> ~/.bashrc
-fi
+	curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+	# source ~/.bashrc
 
-FILE2=/home/vscode/.pyenv/versions/3.11.0b3/bin/python3
-if [ ! -f $FILE2 ]
-then
-	curl -Lq https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
-	source ~/.bashrc
-
-	# install beta version of python3.11 for speed
+	# install python3.11
+	export PYENV_ROOT="$HOME/.pyenv" && \
+	export PATH="$PYENV_ROOT/bin:$PATH" && \
+	eval "$(pyenv init --path)" && \
+	eval "$(pyenv init -)" && \
 	pyenv install 3.11.0b3
 
-	# create a good symlink
 	sudo ln -s /home/vscode/.pyenv/versions/3.11.0b3/bin/python3 /usr/local/bin/python3.11
 else
-	echo "skipping install of python3.11.  Found a binary..."
+	echo "skipping installation .pyenv exists.  delete this and the symlink to run again..."
 fi
-
 echo "dockervscode_bootstrap.sh completed."
