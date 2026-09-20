@@ -18,8 +18,8 @@ print ('hello world')
 print ('hello world')
 
 # data types
-last_name = 'Sheffner'
-first_name = 'Dan'
+last_name = 'Bob'
+first_name = 'Stan'
 print (first_name)
 
 # get type
